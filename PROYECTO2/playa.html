@@ -1,0 +1,167 @@
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="playa.css">
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <img class="imagnav" src="https://i.pinimg.com/564x/c3/44/db/c344db3dfd6f5de0c39904f3558b28f3.jpg" alt="...">
+                <span>REGISTRO DE DATOS</span>  
+        </div>
+      </nav>
+    </header>
+    <main class="container">
+
+        <section class="crud">
+            <h1 class="crud-title">Igresa gustos propios en los campos</h1>
+
+            <form id="formregister" class="crud-form">
+
+                <input class="input" type="text" name="nombre" id="nombre" placeholder="Ingresa tu Nombre"><br><br>
+                <input class="input" type="text" name="apellido" id="apellido" placeholder="Ingresa tu apellido materno"><br><br>
+                <input class="input" type="text" name="pasatiempo" id="pasatiempo" placeholder="Ingresa tu pasatiempo más favorito"><br><br>
+                <input class="input" type="text" name="color" id="color" placeholder="Ingresa tu color favorito"><br><br>
+                <input class="input" type="text" name="postre" id="postre" placeholder="Ingresa tu Postrerito"><br><br>
+                <button type="submit" id="submitbutton" class="button button-primary">Agregar</button><br>
+
+            </form>
+
+            <table class="crud-table">
+                <thead>
+                    <tr>
+                        <th class="table-header">Nombre</th>
+                        <th class="table-header">Apellido</th>
+                        <th class="table-header">Pasatiempo</th>
+                        <th class="table-header">Color</th>
+                        <th class="table-header">Postre</th>
+                        <th class="table-header">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body" class="table--body">
+
+                </tbody>
+            </table>
+
+        </section>
+    </main>
+
+     <script <--src="playa.js" type="module"-->
+        const form = document.getElementById('formregister');
+const nameinput = document.getElementById('nombre')
+const apellidoinput = document.getElementById('apellido')
+const pasatiempoinput = document.getElementById('pasatiempo')
+const colorinput = document.getElementById('color')
+const postreinput = document.getElementById('postre')
+const tableBody = document.getElementById('table-body')
+
+let data = JSON.parse(localStorage.getItem('formData')) || [];
+
+form.addEventListener('submit', function (event){
+ event.preventDefault();
+ 
+ const name = nameinput.value;
+ const apellido = apellidoinput.value;
+ const pasatime = pasatiempoinput.value;
+ const color = colorinput.value;
+ const postre = postreinput.value;
+
+  if (name && apellido && pasatime && color && postre) {
+    const newData = {name,apellido,pasatime,color,postre};
+    data.push(newData);
+    saveDataToLocalstorage();
+    renderTable();
+    form.reset();
+}else{
+    alert('Todos los datos son obligatorios')
+}
+})
+function saveDataToLocalstorage() {
+    localStorage.setItem("formData",JSON.stringify(data));
+}
+
+function renderTable() {
+    tableBody.innerHTML = '';
+
+    data.forEach(function (item, playa){
+       const row = document.createElement('tr')
+       const namecell = document.createElement('td') 
+       const apellidocell = document.createElement('td') 
+       const pasatiempocell = document.createElement('td') 
+       const colorcell = document.createElement('td') 
+       const postrecell = document.createElement('td') 
+       const actioncell = document.createElement('td') 
+       const editbutton = document.createElement('button')
+       const deletetbutton = document.createElement('button')
+
+       namecell.textContent = item.name;
+       apellidocell.textContent = item.apellido;
+       pasatiempocell.textContent = item.pasatime;
+       colorcell.textContent = item.color;
+       postrecell.textContent = item.postre;
+       editbutton.textContent = 'Edit';
+       deletetbutton.textContent = 'Delete';
+
+       editbutton.classList.add("button",'button--secondary')
+       deletetbutton.classList.add("button",'button--terciary')
+
+       editbutton.addEventListener('click', function(){
+        editData(playa);
+       })
+
+       deletetbutton.addEventListener('click', function(){
+        editData(playa);
+       })
+
+       actioncell.appendChild(editbutton);
+       actioncell.appendChild(deletetbutton)
+
+       row.appendChild(namecell);
+       row.appendChild(apellidocell);
+       row.appendChild(pasatiempocell);
+       row.appendChild(colorcell);
+       row.appendChild(postrecell);
+       row.appendChild(actioncell);
+
+       tableBody.appendChild(row);
+});
+}
+
+function editData(playa) {
+    const item = data[playa];
+    nameinput.value = item.name;
+    apellidoinput.value = item.apellido;
+    pasatiempoinput.value = item.pasatime;
+    colorinput.value = item.color;
+    postreinput.value = data.postre;
+    data.splice(playa, 1);
+    saveDataToLocalstorage();
+    renderTable();
+}
+
+function deleteData(playa) {
+    data.splice(playa, 1);
+    saveDataToLocalstorage();
+    renderTable();
+}
+
+renderTable();
+     </script>
+
+    <footer>
+        <div class="divfooter">
+            <h2 class="titulo-final"> PROYECTO ELABORADO POR: Maribel De la Cruz Escareño</h2>
+            <div class="contenticon">
+            <img src="https://i.pinimg.com/564x/70/fa/98/70fa98f26b32eb10b2ae199ac1f0ecdd.jpg" alt="">
+            <img src="https://i.pinimg.com/564x/4e/d3/d1/4ed3d15f501902203b713e5ceb9c4584.jpg" alt="">
+            <img src="https://i.pinimg.com/564x/16/71/c0/1671c09a32f98796ede36fabfab4dee7.jpg" alt="">
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

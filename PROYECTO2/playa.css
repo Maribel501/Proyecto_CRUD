@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap')
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url(fondos.jpg);
+}
+.imagnav{
+    margin-top: 5px;
+    margin-left: 50px;
+     width: 11vw;
+     height: 7vw;
+     border-radius: 45%;
+}
+.navbar{
+    width: auto;
+    height: 7.5vw;
+    background-color: rgb(32, 16, 46);
+}
+span{
+    color: rgb(242, 235, 235);
+    font-size: 1.5em;
+    margin: auto;
+}
+body, button, input{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.container{
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.crud-title{
+    color: #cff1d9;
+}
+.crud{
+    text-align: center;
+}
+.crud-form{
+    display: block;
+    margin: 8px 0;
+}
+.form-input{
+    flex: 1;
+    padding: 3px;
+    margin-right: 10px;
+    font-size: 1rem;
+}
+.input{
+    text-align: center;
+    border-color: rgb(183, 192, 248);
+    border-bottom-color: rgb(94, 59, 73);
+}
+.button{
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    font-weight: 700;
+    transition: all 0.3s;
+}
+
+.button:hover{
+    transform: scale(0.8,1);
+}
+
+.button-primary{
+    background-color: rgb(11, 122, 11);
+    color: #cff1d9;
+}
+.button--secondary{
+    background-color: rgb(232, 116, 8);
+    color: #cff1d9;
+}
+.button--terciary{
+    background-color: rgb(235, 37, 15);
+    color: #cff1d9;
+}
+
+.crud-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header, .table--body td{
+    border: 1px solid #ccc;
+    padding: 8px;
+}
+.table-header{
+    background-color: #f0f0f0;
+}
+.table--body td:nth-child(6){
+    display: flex;
+    justify-content: space-around;
+}
+footer{
+    width: auto;
+    height: 9vw;
+    background-color: rgb(1, 1, 1);
+    margin-bottom: auto;
+    border-bottom-right-radius: 2px;
+    border-bottom-left-radius: 2px;
+    margin-top: 4vw;
+}
+
+ul li .icon{
+    width: 3vw;
+    height: 3vw;
+    border-radius: 50%;
+    margin-top: 50%;
+    margin-bottom: 50%;
+    margin-left: 50%;
+    margin-right: 50%;
+}
+ul{
+    display: flex;
+}
+li{
+    list-style: none;
+    text-align: center;
+}
+h2{
+    text-align: center;
+    color: #f0f0f0;
+}
+img{
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    margin-left: 5vw;
+}
+.contenticon{
+    text-align: center;
+}
